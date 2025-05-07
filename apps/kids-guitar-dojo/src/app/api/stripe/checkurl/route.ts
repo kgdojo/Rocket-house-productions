@@ -5,6 +5,8 @@ import { clerkClient } from '@clerk/nextjs/server';
 export async function POST(req: NextRequest) {
   const data = await req.json();
 
+  console.log(data);
+
   const { productId, userId, email } = data;
 
   if (!productId) {
@@ -31,6 +33,8 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error('Failed to update user metadata', error);
   }
+
+  console.log("The product id: ,", productId);
 
   const checkoutSession = await stripeCheckout(productId);
 

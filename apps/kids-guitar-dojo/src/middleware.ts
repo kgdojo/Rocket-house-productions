@@ -7,6 +7,15 @@ export default clerkMiddleware(
   async (auth, req) => {
     const url = req.nextUrl.pathname;
 
+    const cookies = req.cookies;
+    const isDraftMode = cookies.has('__prerender_bypass');
+
+    if (isDraftMode) {
+      // Allow preview requests to bypass auth and proceed
+      console.info('[MIDDLEWARE] Preview mode detected, bypassing auth');
+      return NextResponse.next();
+    }
+
     // Skip Clerk processing for /slice-simulator and its sub-paths
     if (url.startsWith('slice-simulator')) {
       return;

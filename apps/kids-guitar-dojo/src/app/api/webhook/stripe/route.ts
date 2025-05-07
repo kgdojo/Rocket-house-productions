@@ -5,6 +5,9 @@ import { db, stripe } from '@rocket-house-productions/integration';
 import { clerkClient } from '@clerk/nextjs/server';
 import { MailerList } from '@rocket-house-productions/actions/server';
 
+
+console.log("This is visible");
+
 export async function POST(req: Request, res: Response) {
   let event: Stripe.Event;
 
@@ -63,6 +66,8 @@ export async function POST(req: Request, res: Response) {
           if (!account || !account.id) {
             throw new Error('Account not found');
           }
+
+          console.log(data.metadata);
 
           if (!data.metadata.courseId) {
             throw new Error('No Course ID found');

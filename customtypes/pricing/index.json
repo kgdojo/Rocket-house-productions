@@ -1,0 +1,105 @@
+{
+  "id": "pricing",
+  "json": {
+    "Main": {
+      "uid": {
+        "config": {
+          "label": "UID"
+        },
+        "type": "UID"
+      },
+      "name": {
+        "type": "Text",
+        "config": {
+          "label": "Name",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Description",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+        }
+      },
+      "stripeProductId": {
+        "type": "Text",
+        "config": {
+          "label": "StripeProductId",
+          "placeholder": ""
+        }
+      },
+      "purchase_type": {
+        "type": "Select",
+        "config": {
+          "label": "Purchase Type",
+          "placeholder": "",
+          "options": ["purchase", "upgrade"]
+        }
+      },
+      "sales": {
+        "type": "Boolean",
+        "config": {
+          "label": "Sales",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
+      "free": {
+        "type": "Boolean",
+        "config": {
+          "label": "Free",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
+      },
+      "course_id": {
+        "type": "Text",
+        "config": {
+          "label": "Course Id (Free account only)",
+          "placeholder": ""
+        }
+      },
+      "features": {
+        "type": "Group",
+        "config": {
+          "label": "Features",
+          "repeat": true,
+          "fields": {
+            "feature": {
+              "type": "Text",
+              "config": {
+                "label": "Feature",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "most_popular": {
+        "type": "Boolean",
+        "config": {
+          "label": "Most Popular",
+          "default_value": false,
+          "placeholder_true": "true",
+          "placeholder_false": "false"
+        }
+      },
+      "position": {
+        "type": "Number",
+        "config": {
+          "label": "Position",
+          "placeholder": ""
+        }
+      }
+    }
+  },
+  "label": "Pricing",
+  "repeatable": true,
+  "status": true,
+  "format": "custom"
+}

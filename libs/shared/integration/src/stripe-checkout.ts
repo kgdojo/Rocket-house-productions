@@ -13,12 +13,15 @@ export const stripeCheckout = async (productId: string, purchaseId: string | nul
     return null;
   }
 
+  console.log("The product ID ",productId);
   try {
     const productPrice = await stripe.prices.search({
       query: `product:'${productId}' AND active:'true'`,
     });
 
     const { metadata } = await stripe.products.retrieve(productId);
+
+    console.log("Product metadata: ", metadata)
 
     const checkoutSession = await stripe.checkout.sessions.create({
       mode: 'payment',
@@ -55,6 +58,8 @@ export const stripeCheckout = async (productId: string, purchaseId: string | nul
       },
     });
 
+    console.log("The checkout session", checkoutSession)
+
     if (!checkoutSession.url) {
       throw new Error('Invalid checkout session url');
     }
@@ -83,6 +88,7 @@ export const stripeCheckoutSessionStatus = async (sessionId: string, userId: str
       throw new Error('Account not found');
     }
 
+    
     if (!checkoutSession.metadata?.courseId) {
       throw new Error('No Course ID found');
     }

@@ -7,6 +7,8 @@ export const stripeCheckoutAction = async (data: FormData) => {
   const productId = data.get('productId');
   let purchaseId = data.get('purchaseId');
 
+  console.log("The purchase ID ",purchaseId);
+
   if (typeof productId !== 'string' || !productId) {
     throw new Error('Invalid product ID');
   }

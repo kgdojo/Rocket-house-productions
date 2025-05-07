@@ -9,6 +9,8 @@ import { Tier } from '@rocket-house-productions/types';
 export default async function Page({ params }: { params: { product: string[] } }) {
   const { userId, sessionClaims } = await auth();
 
+  console.log("Session details ", sessionClaims);
+
   if (!userId) {
     return redirect('/');
   }

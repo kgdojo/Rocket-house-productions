@@ -43,6 +43,7 @@ export async function POST(req: Request, res: Response) {
       case 'user.created': {
         const { id, first_name, last_name, email_addresses } = payload.data;
 
+        console.log(id);
         if (!id) {
           console.error('[CLERK WEBHOOK]', 'Invalid user ID', id);
           throw new Error('Invalid user ID');
