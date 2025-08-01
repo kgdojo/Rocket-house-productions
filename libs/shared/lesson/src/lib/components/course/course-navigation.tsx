@@ -105,7 +105,7 @@ export function CourseNavigation({ course, onLoaded, purchaseType = null }: Cour
             });
           }
 
-          if (!complete) {
+          if (!complete) {  
             if (!current) {
               current = count - 1;
             }
