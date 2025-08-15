@@ -165,12 +165,22 @@ export default clerkMiddleware(
             //Adjusted for many purchases 
             if (userDb.purchases.length >= 1) {
               // Find purchase matching the course slug in the URL
-              const purchaseForCourse = userDb.purchases.find(async (purchase: Purchase) => {
+              // const purchaseForCourse = userDb.purchases.find(async (purchase: Purchase) => {
                 
-                const courseResp = await fetch(`${req.nextUrl.origin}/api/courses/${purchase.courseId}`);
-                const course = await courseResp.json();
-                return course.slug === product; // product is extracted from URL
-              });
+              //   const courseResp = await fetch(`${req.nextUrl.origin}/api/courses/${purchase.courseId}`);
+              //   const course = await courseResp.json();
+              //   return course.slug === product; // product is extracted from URL
+              // });
+
+              let purchaseForCourse = null;
+                for (const purchase of userDb.purchases) {
+                  const courseResp = await fetch(`${req.nextUrl.origin}/api/courses/${purchase.courseId}`);
+                  const course = await courseResp.json();
+                  if (course.slug === product) {
+                    purchaseForCourse = purchase;
+                    break;
+                  }
+                }
               
               if (purchaseForCourse && product) {
                 // Allow access if enrolled
