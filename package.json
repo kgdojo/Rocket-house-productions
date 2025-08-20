@@ -136,6 +136,7 @@
     "@types/jest": "29.5.14",
     "@types/lodash": "^4.17.13",
     "@types/node": "18.16.9",
+    "@types/react-dom": "^19.1.7",
     "@types/react-google-recaptcha": "^2.1.9",
     "@types/rss": "^0.0.32",
     "@types/three": "^0.178.1",
